@@ -8,7 +8,6 @@ public class BarTest {
 
 	@Test
 	public void queSePuedaAbrirSinPersonas() {
-		//crear bar y chequear personas adentro isempty()
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		assertTrue(bar.estaAbierto());
@@ -17,9 +16,7 @@ public class BarTest {
 	}
 	
 	@Test
-	public void queNoSePuedanAgregarDosPersonasConElMismoNombre() {
-		//agregar personas con el mismo nombre y misma y distinta edad y que haya solo una adentra
-		//poner cantidad esperada y cantidad obtenida, no directamente el valor en el assert
+	public void queNoSePuedanAgregarDosPersonasConElMismoNombre() throws elBarEstaCerradoException  {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
@@ -33,7 +30,7 @@ public class BarTest {
 	}
 
 	@Test
-	public void queSePresentenAlfabeticamente() {
+	public void queSePresentenAlfabeticamente() throws elBarEstaCerradoException {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
@@ -48,27 +45,19 @@ public class BarTest {
 	}
 
 	@Test
-	public void queSeOrdenenPorEdad() {
+	public void queSeOrdenenPorEdad() throws elBarEstaCerradoException {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
 		bar.agregarCliente("Luis", 25);
 		bar.agregarCliente("Andres", 20);
 		bar.agregarCliente("Daniel", 55);
-		bar.agregarCliente("Benito", 30);
-
+		bar.agregarCliente("Benito", 25);
 		
+		assertEquals(5, bar.getClientes().size());
+		assertEquals(4, bar.ordenarsePorEdad().size());
+		assertEquals(bar.ordenarsePorEdad().first().getNombre(), "Andres");
+		assertEquals(bar.ordenarsePorEdad().last().getNombre(), "Daniel");		
 	}
-//	
-//	@Test
-//	public void asdasd() {
-//		
-//	}
-//	
-//	@Test
-//	public void asdasd() {
-//		
-//	}
-	
 	
 }

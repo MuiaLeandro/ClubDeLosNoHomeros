@@ -8,5 +8,4 @@ public class PorEdadComparator implements Comparator<Cliente> {
 	public int compare(Cliente cliente1, Cliente cliente2) {
 		return (cliente1.getEdad().compareTo(cliente2.getEdad()));
 	}
-
 }

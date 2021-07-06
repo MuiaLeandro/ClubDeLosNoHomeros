@@ -8,11 +8,12 @@ public class ClienteTest {
 
 	@Test
 	public void dosClientesConElMismoNombreSeanIguales() {
-		
-		//persona 1 equals persona 2, si tienen el mismo nombre sean iguales
-		
-		//assertEquals(p1,p2);
-		
+		Cliente cliente1 = new Cliente("Roberto", 22);
+		Cliente cliente2 = new Cliente("Alberto", 25);
+		Cliente cliente3 = new Cliente("Alberto", 44);
+
+		assertTrue(cliente2.equals(cliente3));
+		assertFalse(cliente1.equals(cliente2));		
 	}
 
 }
