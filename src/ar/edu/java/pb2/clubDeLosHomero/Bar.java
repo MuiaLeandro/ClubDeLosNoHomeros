@@ -1,18 +1,17 @@
 package ar.edu.java.pb2.clubDeLosHomero;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.TreeSet;
 
 public class Bar {
 
 	private String nombre;
 	private Boolean estadoDeApertura;
-	private Set<Cliente> clientes;
+	private TreeSet<Cliente> clientes;
 
 	public Bar(String nombre) {
 		this.nombre = nombre; 
 		this.estadoDeApertura = Boolean.FALSE;
-		clientes = new HashSet<>();
+		clientes = new TreeSet<Cliente>();
 	}
 
 	
@@ -25,7 +24,7 @@ public class Bar {
 	}
 
 
-	public Set<Cliente> getClientes() {
+	public TreeSet<Cliente> getClientes() {
 		
 		return this.clientes;
 	}
@@ -37,6 +36,9 @@ public class Bar {
 		clientes.add(nuevo);		
 	}
 	
-	
+	public void ordenarsePorEdad() {
+		TreeSet<Cliente> nuevaLista = new TreeSet<Cliente>(PorEdadComparator);
+		
+	}
 
 }

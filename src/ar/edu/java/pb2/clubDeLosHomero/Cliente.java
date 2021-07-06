@@ -1,6 +1,6 @@
 package ar.edu.java.pb2.clubDeLosHomero;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente> {
 
 	private String nombre;
 	private Integer edad;
@@ -11,7 +11,7 @@ public class Cliente {
 	
 	}
 
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -34,6 +34,19 @@ public class Cliente {
 		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
+	}*/
+
+	@Override
+	public int compareTo(Cliente otro) {		
+		return this.nombre.compareTo(otro.nombre);
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public Integer getEdad() {
+		return this.edad;
 	}
 
 	

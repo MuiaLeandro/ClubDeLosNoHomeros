@@ -37,15 +37,28 @@ public class BarTest {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
-		bar.agregarCliente("Carlos", 25);
+		bar.agregarCliente("Luis", 25);
+		bar.agregarCliente("Andres", 42);
+		bar.agregarCliente("Daniel", 42);
+		bar.agregarCliente("Benito", 42);
+
+		
+		assertEquals(bar.getClientes().first().getNombre(), "Andres");
+		assertEquals(bar.getClientes().last().getNombre(), "Luis");
+	}
+
+	@Test
+	public void queSeOrdenenPorEdad() {
+		Bar bar = new Bar("Club de los No Homeros");
+		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
+		bar.agregarCliente("Luis", 25);
+		bar.agregarCliente("Andres", 20);
+		bar.agregarCliente("Daniel", 55);
+		bar.agregarCliente("Benito", 30);
+
 		
 	}
-//
-//	@Test
-//	public void queSeOrdenenPorEdad() {
-//		
-//	}
 //	
 //	@Test
 //	public void asdasd() {
