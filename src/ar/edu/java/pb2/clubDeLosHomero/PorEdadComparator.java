@@ -6,6 +6,14 @@ public class PorEdadComparator implements Comparator<Cliente> {
 
 	@Override
 	public int compare(Cliente cliente1, Cliente cliente2) {
-		return (cliente1.getEdad().compareTo(cliente2.getEdad()));
+		int compareNumber;
+		
+		compareNumber = (cliente1.getEdad().compareTo(cliente2.getEdad()));
+		
+		if (compareNumber==0) {
+			compareNumber = cliente1.getNombre().compareTo(cliente2.getNombre());
+		}
+		
+		return compareNumber;		
 	}
 }

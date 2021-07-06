@@ -3,6 +3,7 @@ package ar.edu.java.pb2.clubDeLosHomero;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class BarTest {
 
@@ -16,7 +17,7 @@ public class BarTest {
 	}
 	
 	@Test
-	public void queNoSePuedanAgregarDosPersonasConElMismoNombre() throws elBarEstaCerradoException  {
+	public void queNoSePuedanAgregarDosPersonasConElMismoNombre() throws BarCerradoException  {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
@@ -30,7 +31,7 @@ public class BarTest {
 	}
 
 	@Test
-	public void queSePresentenAlfabeticamente() throws elBarEstaCerradoException {
+	public void queSePresentenAlfabeticamente() throws BarCerradoException {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
@@ -45,7 +46,7 @@ public class BarTest {
 	}
 
 	@Test
-	public void queSeOrdenenPorEdad() throws elBarEstaCerradoException {
+	public void queSeOrdenenPorEdad() throws BarCerradoException {
 		Bar bar = new Bar("Club de los No Homeros");
 		bar.abrirBar();
 		bar.agregarCliente("Carlos", 42);
@@ -55,9 +56,17 @@ public class BarTest {
 		bar.agregarCliente("Benito", 25);
 		
 		assertEquals(5, bar.getClientes().size());
-		assertEquals(4, bar.ordenarsePorEdad().size());
+		assertEquals(5, bar.ordenarsePorEdad().size());
 		assertEquals(bar.ordenarsePorEdad().first().getNombre(), "Andres");
 		assertEquals(bar.ordenarsePorEdad().last().getNombre(), "Daniel");		
+	}
+	
+	@Test (expected = BarCerradoException.class)
+	public void queNoSeAgreguenClientesSiElBarEstaCerrado() throws BarCerradoException{
+		Bar bar = new Bar("Club de los No Homeros");
+		bar.agregarCliente("Carlos", 42);
+		bar.agregarCliente("Luis", 25);
+				
 	}
 	
 }

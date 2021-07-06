@@ -29,11 +29,11 @@ public class Bar {
 	}
 
 
-	public void agregarCliente(String nombre, Integer edad) throws elBarEstaCerradoException{
+	public void agregarCliente(String nombre, Integer edad) throws BarCerradoException{
 		if(estadoDeApertura) {
 			Cliente nuevo = new Cliente(nombre, edad);
 			clientes.add(nuevo);
-		} //else throw elBarEstaCerradoException;
+		} else throw new BarCerradoException("No pueden agregarse clientes si el bar esta cerrado");
 	}
 	
 	public TreeSet<Cliente> ordenarsePorEdad() {
